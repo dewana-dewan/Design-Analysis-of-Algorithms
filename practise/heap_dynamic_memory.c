@@ -58,6 +58,18 @@ heap* insert(heap *hp, int val, que *q) {
 	increase_val(node *new, int val);
 }
 
+void increase_val(node *new, int val ) {
+	int temp;
+	if(new -> valu > val)
+		return;
+	new -> valu = val;
+	while(new -> p != NULL && (new -> p) -> valu < new -> valu) {
+		temp = new -> valu;
+		new -> valu = (new -> p) -> valu;
+		new = new -> p;
+	}
+}
+
 int main() {
 	
 
