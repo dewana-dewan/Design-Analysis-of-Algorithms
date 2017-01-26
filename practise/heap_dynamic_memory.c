@@ -2,6 +2,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# define maxxxx 10000 
 
 typedef struct {
 	node *l, *r, *p;
@@ -10,9 +11,31 @@ typedef struct {
 
 typedef struct {
 	node *root, *lst_nd;
-	int ocp;
 	int length;
 } heap;
+
+typedef struct {
+	node *arr[maxxxx];
+	int top, bottom;
+} que;
+
+node *pop(que *q) {
+	int temp;
+	if(top == bottom) {
+		printf("queue empty");
+		return;
+	}
+	temp = q -> arr[q -> bottom];
+	(q -> bottom) += 1;
+	return temp;
+}
+
+void push(que *q, int val) {
+	if(top >= maxxxx) {
+		printf("memory excedded");
+		return;
+	}
+}
 
 void max_heapify(node *nd) {
 	node *tl, *tr;
@@ -52,6 +75,7 @@ heap* insert(heap *hp, int val, que *q) {
 		tmp -> r = new;
 	else{
 		tmp = pop(q);
+		hp -> lst_nd = tmp;
 		new -> p = tmp;	
 		tmp -> l = new;
 	}
@@ -71,7 +95,18 @@ void increase_val(node *new, int val ) {
 }
 
 int main() {
-	
+	heap *hp;
+	node *temp;
+	int a, b, c, siz;
+	scanf("%d", &siz);
+	scanf("%d", &a);
+	hp = (heap *)malloc(sizeof(heap));
+	temp = (node *)malloc(sizeof(node));
+	temp -> p = temp -> l = temp -> r = NULL;
+	temp -> valu = a;
+	hp -> root = temp;
+	hp -> lst_nd = temp;
+	hp -> length += 1;
 
 	return 0;
 }
