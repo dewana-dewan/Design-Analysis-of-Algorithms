@@ -108,5 +108,13 @@ int main() {
 	hp -> lst_nd = temp;
 	hp -> length += 1;
 
+
+	for(i = 1; i < siz; i++) {
+		temp = (node *)malloc(sizeof(node));
+		temp -> l = temp -> r = NULL;
+		
+		
+	}
+
 	return 0;
 }
